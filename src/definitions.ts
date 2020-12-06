@@ -5,7 +5,7 @@ declare module '@capacitor/core' {
 }
 
 export interface SiriShortcutsPlugin {
-  donate(options: { persistentIdentifier: string, title: string, suggestedInvocationPhrase?: string, isEligibleForSearch?: boolean, isEligibleForPrediction?: boolean, userInfo: UserInfo}): Promise<any>;
+  donate(options: { persistentIdentifier: string, title: string, userInfo?: UserInfo, suggestedInvocationPhrase?: string, isEligibleForSearch?: boolean, isEligibleForPrediction?: boolean}): Promise<any>;
 }
 
 /**
