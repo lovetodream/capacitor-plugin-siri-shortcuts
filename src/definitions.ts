@@ -5,5 +5,12 @@ declare module '@capacitor/core' {
 }
 
 export interface SiriShortcutsPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  donate(options: { persistentIdentifier: string, title: string, suggestedInvocationPhrase?: string, isEligibleForSearch?: boolean, isEligibleForPrediction?: boolean, userInfo: UserInfo}): Promise<any>;
+}
+
+/**
+ * Anything except persistentIdentifier, because the persistentIdentifier will be added automatically!
+ */
+interface UserInfo {
+  string: any
 }
