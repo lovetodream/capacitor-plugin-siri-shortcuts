@@ -1,3 +1,9 @@
+![ios](https://shields.ssh.bz/badge/iOS-%3E%3D12.0-informational)
+![xcode](https://shields.ssh.bz/badge/Xcode-%3E%3D10.0-informational)
+![npm](https://shields.ssh.bz/npm/dw/capacitor-plugin-siri-shorts)
+![GitHub](https://shields.ssh.bz/github/license/timozacherl/capacitor-plugin-siri-shortcuts)
+![npm](https://shields.ssh.bz/npm/v/capacitor-plugin-siri-shorts)
+
 # Capacitor Plugin for Siri Shortcuts
 
 ## Setup
