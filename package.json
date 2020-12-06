@@ -1,5 +1,5 @@
 {
-  "name": "capacitor-plugin-siri-shortcuts",
+  "name": "capacitor-plugin-siri-shorts",
   "version": "1.0.0",
   "description": "Capacitor Plugin for Siri Shortcuts",
   "main": "dist/plugin.js",
