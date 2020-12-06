@@ -5,7 +5,7 @@
 The Plugin requires at least iOS 12 and Xcode 10.
 
 ```
-npm i capacitor-plugin-siri-shortcuts
+npm i capacitor-plugin-siri-shorts
 ```
 
 ### iOS Project
