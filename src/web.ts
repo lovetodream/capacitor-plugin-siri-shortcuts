@@ -1,5 +1,5 @@
 import { WebPlugin } from '@capacitor/core';
-import { SiriShortcutsPlugin } from './definitions';
+import { SiriShortcutsPlugin, UserInfo } from './definitions';
 
 export class SiriShortcutsWeb extends WebPlugin implements SiriShortcutsPlugin {
   constructor() {
@@ -8,10 +8,8 @@ export class SiriShortcutsWeb extends WebPlugin implements SiriShortcutsPlugin {
       platforms: ['web'],
     });
   }
-
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
+  async donate(options: { persistentIdentifier: string; title: string; userInfo?: UserInfo | undefined; suggestedInvocationPhrase?: string | undefined; isEligibleForSearch?: boolean | undefined; isEligibleForPrediction?: boolean | undefined; }): Promise<any> {
+    return options
   }
 }
 

@@ -11,6 +11,6 @@ export interface SiriShortcutsPlugin {
 /**
  * Anything except persistentIdentifier, because the persistentIdentifier will be added automatically!
  */
-interface UserInfo {
+export interface UserInfo {
   string: any
 }
