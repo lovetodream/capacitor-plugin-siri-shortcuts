@@ -1,6 +1,6 @@
 {
   "name": "capacitor-plugin-siri-shorts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Capacitor Plugin for Siri Shortcuts",
   "main": "dist/plugin.js",
   "module": "dist/esm/index.js",
@@ -37,7 +37,7 @@
     "dist/",
     "ios/",
     "android/",
-    "CapacitorPluginSiriShortcuts.podspec"
+    "CapacitorPluginSiriShorts.podspec"
   ],
   "keywords": [
     "capacitor",
