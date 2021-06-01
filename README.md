@@ -1,8 +1,9 @@
-![ios](https://shields.ssh.bz/badge/iOS-%3E%3D12.0-informational)
-![xcode](https://shields.ssh.bz/badge/Xcode-%3E%3D10.0-informational)
-![npm](https://shields.ssh.bz/npm/dw/capacitor-plugin-siri-shorts)
-![GitHub](https://shields.ssh.bz/github/license/timozacherl/capacitor-plugin-siri-shortcuts)
-![npm](https://shields.ssh.bz/npm/v/capacitor-plugin-siri-shorts)
+![ios](https://shields.io/badge/iOS-%3E%3D12.0-informational)
+![xcode](https://shields.io/badge/Xcode-%3E%3D10.0-informational)
+![npm](https://shields.io/npm/dw/capacitor-plugin-siri-shorts)
+![GitHub](https://shields.io/github/license/timozacherl/capacitor-plugin-siri-shortcuts)
+![npm](https://shields.io/npm/v/capacitor-plugin-siri-shorts)
+![capacitor](https://shields.io/badge/Capacitor-%3E%3D3.0.0-informational)
 
 # Capacitor Plugin for Siri Shortcuts
 
@@ -10,24 +11,28 @@
 
 The Plugin requires at least iOS 12 and Xcode 10.
 
-```
+```sh
 npm i capacitor-plugin-siri-shorts
 ```
 
 ### iOS Project
 
 Add a new Item to `NSUserActivityTypes` inside your `Info.plist` with your Bundle Identifier:
-```
+
+```sh
 $(PRODUCT_BUNDLE_IDENTIFIER).shortcut
 ```
 
 Extend the `application:continueuserActivity,restorationHandler` function inside your `AppDelegate.swift` with the following line:
+
 ```swift
 NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "appLaunchBySiriShortcuts"), object: userActivity, userInfo: userActivity.userInfo))
 ```
+
 **Put this line before the return statement!**
 
 The function should look similar to that:
+
 ```swift
 func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
     NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: "appLaunchBySiriShortcuts"), object: userActivity, userInfo: userActivity.userInfo))
@@ -38,6 +43,7 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 ## Example Usage
 
 Basic example of the donate function:
+
 ```ts
 import { Plugins } from '@capacitor/core';
 
@@ -54,6 +60,7 @@ someAction() {
 ```
 
 It's recommended to add a Listener into the `initializeApp()` function inside `app.component.ts`.
+
 ```ts
 initializeApp() {
   this.platform.ready().then(() => {
@@ -70,20 +77,54 @@ initializeApp() {
 
 ## API Reference
 
-[donate(options): Promise&lt;any&gt;](#donate)  
-Donate shortcut to Siri/Shortcuts (silently)
+<docgen-index>
 
-## donate
-Donate shortcut to Siri/Shortcuts (silently)
+* [`donate(...)`](#donate)
+* [Interfaces](#interfaces)
 
-**Returns:** Promise
+</docgen-index>
 
-| Param | Type | Description |
-| --- | --- | --- |
-| options | <code>object</code> | Options to specify for the donation |
-| options.persistentIdentifier | <code>string</code> | Specify an identifier to uniquely identify the shortcut, in order to be able to remove it |
-| options.title | <code>string</code> | Specify a title for the shortcut, which is visible to the user as the name of the shortcut |
-| options.userInfo | <code>object?</code> | Provide a key-value object that contains information about the shortcut, this will be returned in the getActivatedShortcut method. It is not possible to use the persistentIdentifier key, it is used internally |
-| options.suggestedInvocationPhrase | <code>string?</code> | Specify the phrase to give the user some inspiration on what the shortcut to call |
-| options.isEligibleForSearch | <code>boolean?</code> | This value defaults to true, set this value to make it searchable in Siri |
-| options.isEligibleForPrediction | <code>boolean?</code> | This value defaults to true, set this value to set whether the shortcut eligible for prediction |
+<docgen-api>
+<!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
+
+### donate(...)
+
+```typescript
+donate(options: Options) => any
+```
+
+Donates the provided action to Siri/Shortcuts
+
+| Param         | Type                                        |
+| ------------- | ------------------------------------------- |
+| **`options`** | <code><a href="#options">Options</a></code> |
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### Interfaces
+
+
+#### Options
+
+<a href="#options">Options</a> to specify for the donation
+
+| Prop                            | Type                                          | Description                                                                                                                                                                                                      |
+| ------------------------------- | --------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **`persistentIdentifier`**      | <code>string</code>                           | Specify an identifier to uniquely identify the shortcut, in order to be able to remove it                                                                                                                        |
+| **`title`**                     | <code>string</code>                           | Specify a title for the shortcut, which is visible to the user as the name of the shortcut                                                                                                                       |
+| **`userInfo`**                  | <code><a href="#userinfo">UserInfo</a></code> | Provide a key-value object that contains information about the shortcut, this will be returned in the getActivatedShortcut method. It is not possible to use the persistentIdentifier key, it is used internally |
+| **`suggestedInvocationPhrase`** | <code>string</code>                           | Specify the phrase to give the user some inspiration on what the shortcut to call                                                                                                                                |
+| **`isEligibleForSearch`**       | <code>boolean</code>                          | This value defaults to true, set this value to make it searchable in Siri                                                                                                                                        |
+| **`isEligibleForPrediction`**   | <code>boolean</code>                          | This value defaults to true, set this value to set whether the shortcut eligible for prediction                                                                                                                  |
+
+
+#### UserInfo
+
+| Prop         | Type             | Description                                                                                         |
+| ------------ | ---------------- | --------------------------------------------------------------------------------------------------- |
+| **`string`** | <code>any</code> | Anything except persistentIdentifier, because the persistentIdentifier will be added automatically! |
+
+</docgen-api>
