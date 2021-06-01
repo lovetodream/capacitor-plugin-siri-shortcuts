@@ -81,7 +81,7 @@ public class SiriShortcuts: CAPPlugin {
             activity.userInfo = userInfo
         }
         
-        self.bridge.viewController.userActivity = activity
+        self.bridge?.viewController?.userActivity = activity
         
         activity.becomeCurrent()
         
@@ -93,7 +93,7 @@ public class SiriShortcuts: CAPPlugin {
 extension SiriShortcuts {
     @objc public func onOpenAppByUserActivity(notification: Notification) {
         debugPrint(notification)
-        self.notifyListeners("appLaunchBySiriShortcuts", data: notification.object as? [String : Any] ?? ["something": "happened"], retainUntilConsumed: true)
+        self.notifyListeners("appLaunchBySiriShortcuts", data: notification.userInfo as? [String : Any] ?? ["something": "happened"], retainUntilConsumed: true)
     }
 }
 

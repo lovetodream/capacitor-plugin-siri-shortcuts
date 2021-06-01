@@ -6,11 +6,13 @@ import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 
-@NativePlugin
+@CapacitorPlugin(
+    name = "SiriShortcuts"
+)
 public class SiriShortcuts extends Plugin {
 
     @PluginMethod
-    public void echo(PluginCall call) {
+    public void donate(PluginCall call) {
         String value = call.getString("value");
 
         JSObject ret = new JSObject();
