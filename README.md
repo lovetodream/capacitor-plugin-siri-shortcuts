@@ -7,7 +7,12 @@
 
 # Capacitor Plugin for Siri Shortcuts
 
-## Setup
+## 💥 Breaking Changes
+
+Version 2 of this Plugin only works with Capacitor 3 or newer.
+For Capacitor 2 install `npm i capacitor-plugin-siri-shorts@1.0.3`.
+
+## 🔧 Setup
 
 The Plugin requires at least iOS 12 and Xcode 10.
 
@@ -40,7 +45,7 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 }
 ```
 
-## Example Usage
+## ✨ Example Usage
 
 Basic example of the donate function:
 
@@ -73,7 +78,7 @@ initializeApp() {
 }
 ```
 
-## API Reference
+## 🏗️ API Reference
 
 <docgen-index>
 
