@@ -15,7 +15,7 @@ public class SiriShortcuts: CAPPlugin {
     
     public override func load() {
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(onOpenAppByUserActivity(notification:)),
+                                               selector: #selector(self.onOpenAppByUserActivity(notification:)),
                                                name: NSNotification.Name("appLaunchBySiriShortcuts"), object: nil)
     }
     
@@ -81,7 +81,9 @@ public class SiriShortcuts: CAPPlugin {
             activity.userInfo = userInfo
         }
         
-        self.bridge?.viewController?.userActivity = activity
+        DispatchQueue.main.async {
+            self.bridge?.viewController?.userActivity = activity
+        }
         
         activity.becomeCurrent()
         
