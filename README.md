@@ -45,13 +45,11 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 Basic example of the donate function:
 
 ```ts
-import { Plugins } from '@capacitor/core';
+import { SiriShortcuts } from 'capacitor-plugin-siri-shorts';
 
 ...
 
 someAction() {
-  const { SiriShortcuts } = Plugins;
-
   SiriShortcuts.donate({
     persistentIdentifier: "someIdentifier",
     title: "A descriptive title"
@@ -67,7 +65,7 @@ initializeApp() {
     
     ...
     
-    Plugins.SiriShortcuts.addListener('appLaunchBySiriShortcuts', (res) => {
+    SiriShortcuts.addListener('appLaunchBySiriShortcuts', (res) => {
       // do something with the response of the shortcut here
       console.log(res)
     });
@@ -80,6 +78,8 @@ initializeApp() {
 <docgen-index>
 
 * [`donate(...)`](#donate)
+* [`addListener(...)`](#addlistener)
+* [`removeAllListeners()`](#removealllisteners)
 * [Interfaces](#interfaces)
 
 </docgen-index>
@@ -98,6 +98,38 @@ Donates the provided action to Siri/Shortcuts
 | Param         | Type                                        |
 | ------------- | ------------------------------------------- |
 | **`options`** | <code><a href="#options">Options</a></code> |
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### addListener(...)
+
+```typescript
+addListener(eventName: 'appLaunchBySiriShortcuts', listenerFunc: (shortcut: Shortcut) => void) => Promise<PluginListenerHandle> & PluginListenerHandle
+```
+
+Listens to events associated with Siri Shortcuts
+and notifies the listenerFunc if a Shortcuts has been executed.
+
+| Param              | Type                                                                 | Description                                     |
+| ------------------ | -------------------------------------------------------------------- | ----------------------------------------------- |
+| **`eventName`**    | <code>"appLaunchBySiriShortcuts"</code>                              | name of the event                               |
+| **`listenerFunc`** | <code>(shortcut: <a href="#shortcut">Shortcut</a>) =&gt; void</code> | function to execute when listener gets notified |
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### removeAllListeners()
+
+```typescript
+removeAllListeners() => any
+```
+
+Remove all listeners for this plugin.
 
 **Returns:** <code>any</code>
 
@@ -123,8 +155,18 @@ Donates the provided action to Siri/Shortcuts
 
 #### UserInfo
 
-| Prop         | Type             | Description                                                                                         |
-| ------------ | ---------------- | --------------------------------------------------------------------------------------------------- |
-| **`string`** | <code>any</code> | Anything except persistentIdentifier, because the persistentIdentifier will be added automatically! |
+
+#### Shortcut
+
+| Prop                       | Type                |
+| -------------------------- | ------------------- |
+| **`persistentIdentifier`** | <code>string</code> |
+
+
+#### PluginListenerHandle
+
+| Prop         | Type                      |
+| ------------ | ------------------------- |
+| **`remove`** | <code>() =&gt; any</code> |
 
 </docgen-api>
