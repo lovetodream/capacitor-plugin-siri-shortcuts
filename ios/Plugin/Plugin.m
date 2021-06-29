@@ -5,4 +5,6 @@
 // each method the plugin supports using the CAP_PLUGIN_METHOD macro.
 CAP_PLUGIN(SiriShortcuts, "SiriShortcuts",
            CAP_PLUGIN_METHOD(donate, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(delete, CAPPluginReturnPromise);
+           CAP_PLUGIN_METHOD(deleteAll, CAPPluginReturnPromise);
 )

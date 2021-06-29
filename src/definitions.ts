@@ -1,27 +1,43 @@
-import type { PluginListenerHandle } from '@capacitor/core'
+import type { PluginListenerHandle } from '@capacitor/core';
 
 export interface SiriShortcutsPlugin {
   /**
    * Donates the provided action to Siri/Shortcuts
-   * 
+   *
    * @since 1.0.0
-   * 
-   * @param options 
+   *
+   * @param {Options} options Options to specify for the donation
    */
   donate(options: Options): Promise<any>;
 
   /**
+   * Deletes the previous donations with the provided persistent identifiers
+   *
+   * @since 2.1.0
+   *
+   * @param {Array.<String>} identifiers Persistent identifiers which should be deleted
+   */
+  delete(identifiers: string[]): Promise<void>;
+
+  /**
+   * Delets all the previously donated activities
+   *
+   * @since 2.1.0
+   */
+  deleteAll(): Promise<void>;
+
+  /**
    * Listens to events associated with Siri Shortcuts
    * and notifies the listenerFunc if a Shortcuts has been executed.
-   * 
+   *
    * @since 2.0.1
-   * 
-   * @param eventName name of the event
-   * @param listenerFunc function to execute when listener gets notified
+   *
+   * @param eventName Name of the event
+   * @param listenerFunc Function to execute when listener gets notified
    */
   addListener(
     eventName: 'appLaunchBySiriShortcuts',
-    listenerFunc: (shortcut: Shortcut) => void
+    listenerFunc: (shortcut: Shortcut) => void,
   ): Promise<PluginListenerHandle> & PluginListenerHandle;
 
   /**
@@ -34,14 +50,14 @@ export interface SiriShortcutsPlugin {
 
 export interface UserInfo {
   /**
-   * Anything except persistentIdentifier, because the 
+   * Anything except persistentIdentifier, because the
    * persistentIdentifier will be added automatically!
    */
-  [key: string]: string
+  [key: string]: string;
 }
 
 export interface Shortcut extends UserInfo {
-  persistentIdentifier: Options["persistentIdentifier"]
+  persistentIdentifier: Options['persistentIdentifier'];
 }
 
 /**

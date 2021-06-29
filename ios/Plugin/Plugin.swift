@@ -7,11 +7,9 @@ import Capacitor
  * Please read the Capacitor iOS Plugin Development Guide
  * here: https://capacitorjs.com/docs/plugins/ios
  */
-@available(iOS 12.0, *)
 @objc(SiriShortcuts)
 public class SiriShortcuts: CAPPlugin {
     var activity: NSUserActivity?
-    //var shortcutPresentedDelegate: ShortcutPresentedDelegate?
     
     public override func load() {
         NotificationCenter.default.addObserver(self,
@@ -32,6 +30,27 @@ public class SiriShortcuts: CAPPlugin {
         
         call.resolve()
         
+    }
+    
+    @objc func delete(_ call: CAPPluginCall) {
+        guard let identifiers = call.getArray("identifiers", String.self) else {
+            call.reject("No identifiers provided")
+            return
+        }
+        
+        DispatchQueue.main.async {
+            NSUserActivity.deleteSavedUserActivities(withPersistentIdentifiers: identifiers) {
+                call.resolve()
+            }
+        }
+    }
+    
+    @objc func deleteAll(_ call: CAPPluginCall) {
+        DispatchQueue.main.async {
+            NSUserActivity.deleteAllSavedUserActivities {
+                call.resolve()
+            }
+        }
     }
     
     /**
@@ -91,7 +110,6 @@ public class SiriShortcuts: CAPPlugin {
     }
 }
 
-@available(iOS 12.0, *)
 extension SiriShortcuts {
     @objc public func onOpenAppByUserActivity(notification: Notification) {
         debugPrint(notification)

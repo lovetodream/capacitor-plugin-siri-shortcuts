@@ -47,6 +47,8 @@ func application(_ application: UIApplication, continue userActivity: NSUserActi
 
 ## ✨ Example Usage
 
+### A full Ionic + Angular example is available [here](https://github.com/lovetodream/siri-shortcuts-ionic-angular-sample)
+
 Basic example of the donate function:
 
 ```ts
@@ -62,7 +64,7 @@ someAction() {
 }
 ```
 
-It's recommended to add a Listener into the `initializeApp()` function inside `app.component.ts`.
+It's recommended to add a listener into the `initializeApp()` function inside `app.component.ts`.
 
 ```ts
 initializeApp() {
@@ -83,6 +85,8 @@ initializeApp() {
 <docgen-index>
 
 * [`donate(...)`](#donate)
+* [`delete(...)`](#delete)
+* [`deleteAll()`](#deleteall)
 * [`addListener(...)`](#addlistener)
 * [`removeAllListeners()`](#removealllisteners)
 * [Interfaces](#interfaces)
@@ -100,9 +104,39 @@ donate(options: Options) => any
 
 Donates the provided action to Siri/Shortcuts
 
-| Param         | Type                                        |
-| ------------- | ------------------------------------------- |
-| **`options`** | <code><a href="#options">Options</a></code> |
+| Param         | Type                                        | Description                                                |
+| ------------- | ------------------------------------------- | ---------------------------------------------------------- |
+| **`options`** | <code><a href="#options">Options</a></code> | <a href="#options">Options</a> to specify for the donation |
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### delete(...)
+
+```typescript
+delete(identifiers: string[]) => any
+```
+
+Deletes the previous donations with the provided persistent identifiers
+
+| Param             | Type            | Description                                    |
+| ----------------- | --------------- | ---------------------------------------------- |
+| **`identifiers`** | <code>{}</code> | Persistent identifiers which should be deleted |
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### deleteAll()
+
+```typescript
+deleteAll() => any
+```
+
+Delets all the previously donated activities
 
 **Returns:** <code>any</code>
 
@@ -120,8 +154,8 @@ and notifies the listenerFunc if a Shortcuts has been executed.
 
 | Param              | Type                                                                 | Description                                     |
 | ------------------ | -------------------------------------------------------------------- | ----------------------------------------------- |
-| **`eventName`**    | <code>"appLaunchBySiriShortcuts"</code>                              | name of the event                               |
-| **`listenerFunc`** | <code>(shortcut: <a href="#shortcut">Shortcut</a>) =&gt; void</code> | function to execute when listener gets notified |
+| **`eventName`**    | <code>"appLaunchBySiriShortcuts"</code>                              | Name of the event                               |
+| **`listenerFunc`** | <code>(shortcut: <a href="#shortcut">Shortcut</a>) =&gt; void</code> | Function to execute when listener gets notified |
 
 **Returns:** <code>any</code>
 
