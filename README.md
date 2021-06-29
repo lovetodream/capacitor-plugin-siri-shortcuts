@@ -116,14 +116,14 @@ Donates the provided action to Siri/Shortcuts
 ### delete(...)
 
 ```typescript
-delete(identifiers: string[]) => any
+delete(options: DeleteOptions) => any
 ```
 
 Deletes the previous donations with the provided persistent identifiers
 
-| Param             | Type            | Description                                    |
-| ----------------- | --------------- | ---------------------------------------------- |
-| **`identifiers`** | <code>{}</code> | Persistent identifiers which should be deleted |
+| Param         | Type                                                    |
+| ------------- | ------------------------------------------------------- |
+| **`options`** | <code><a href="#deleteoptions">DeleteOptions</a></code> |
 
 **Returns:** <code>any</code>
 
@@ -195,7 +195,20 @@ Remove all listeners for this plugin.
 #### UserInfo
 
 
+#### DeleteOptions
+
+<a href="#options">Options</a> to specify for a deletion
+
+| Prop              | Type            | Description                                             |
+| ----------------- | --------------- | ------------------------------------------------------- |
+| **`identifiers`** | <code>{}</code> | Array of persistent identifiers which should be deleted |
+
+
 #### Shortcut
+
+Object which will be returned by the listener which
+contains the persistent identifier and the userinfo
+of a shortcut
 
 | Prop                       | Type                |
 | -------------------------- | ------------------- |

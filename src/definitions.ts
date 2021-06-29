@@ -15,9 +15,9 @@ export interface SiriShortcutsPlugin {
    *
    * @since 2.1.0
    *
-   * @param {Array.<String>} identifiers Persistent identifiers which should be deleted
+   * @param {DeleteOptions} identifiers Persistent identifiers which should be deleted
    */
-  delete(identifiers: string[]): Promise<void>;
+  delete(options: DeleteOptions): Promise<void>;
 
   /**
    * Delets all the previously donated activities
@@ -56,6 +56,11 @@ export interface UserInfo {
   [key: string]: string;
 }
 
+/**
+ * Object which will be returned by the listener which
+ * contains the persistent identifier and the userinfo
+ * of a shortcut
+ */
 export interface Shortcut extends UserInfo {
   persistentIdentifier: Options['persistentIdentifier'];
 }
@@ -101,4 +106,14 @@ export interface Options {
    * the shortcut eligible for prediction
    */
   isEligibleForPrediction?: boolean;
+}
+
+/**
+ * Options to specify for a deletion
+ */
+export interface DeleteOptions {
+  /**
+   * Array of persistent identifiers which should be deleted
+   */
+  identifiers: string[];
 }
