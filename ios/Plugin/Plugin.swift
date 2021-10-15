@@ -10,6 +10,7 @@ import Capacitor
 @objc(SiriShortcuts)
 public class SiriShortcuts: CAPPlugin {
     var activity: NSUserActivity?
+    var currentCall: CAPPluginCall?
     
     public override func load() {
         NotificationCenter.default.addObserver(self,
@@ -30,6 +31,24 @@ public class SiriShortcuts: CAPPlugin {
         
         call.resolve()
         
+    }
+    
+    @objc func present(_ call: CAPPluginCall) {
+        self.activity = self.createUserActivity(from: call, makeActive: true)
+        
+        if let userActivity = self.activity  {
+            let shortcut = INShortcut(userActivity: userActivity)
+            let viewController = INUIAddVoiceShortcutViewController(shortcut: shortcut)
+            self.currentCall = call
+            DispatchQueue.main.async {
+                viewController.modalPresentationStyle = .formSheet
+                viewController.delegate = self
+                self.bridge?.viewController?.present(viewController, animated: true, completion: nil)
+            }
+            return
+        }
+        
+        call.reject("No activity provided")
     }
     
     @objc func delete(_ call: CAPPluginCall) {
@@ -107,6 +126,26 @@ public class SiriShortcuts: CAPPlugin {
         activity.becomeCurrent()
         
         return activity
+    }
+}
+
+extension SiriShortcuts: INUIAddVoiceShortcutViewControllerDelegate {
+    public func addVoiceShortcutViewController(_ controller: INUIAddVoiceShortcutViewController, didFinishWith voiceShortcut: INVoiceShortcut?, error: Error?) {
+        self.bridge?.viewController?.dismiss(animated: true, completion: {
+            if error == nil {
+                self.currentCall?.resolve()
+            } else {
+                self.currentCall?.reject(error!.localizedDescription)
+            }
+            self.currentCall = nil
+        })
+    }
+    
+    public func addVoiceShortcutViewControllerDidCancel(_ controller: INUIAddVoiceShortcutViewController) {
+        self.bridge?.viewController?.dismiss(animated: true, completion: {
+            self.currentCall?.reject("Adding voice shortcut cancelled by user")
+            self.currentCall = nil
+        })
     }
 }
 

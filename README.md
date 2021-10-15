@@ -85,6 +85,7 @@ initializeApp() {
 <docgen-index>
 
 * [`donate(...)`](#donate)
+* [`present(...)`](#present)
 * [`delete(...)`](#delete)
 * [`deleteAll()`](#deleteall)
 * [`addListener(...)`](#addlistener)
@@ -103,6 +104,23 @@ donate(options: Options) => any
 ```
 
 Donates the provided action to Siri/Shortcuts
+
+| Param         | Type                                        | Description                                                |
+| ------------- | ------------------------------------------- | ---------------------------------------------------------- |
+| **`options`** | <code><a href="#options">Options</a></code> | <a href="#options">Options</a> to specify for the donation |
+
+**Returns:** <code>any</code>
+
+--------------------
+
+
+### present(...)
+
+```typescript
+present(options: Options) => any
+```
+
+Presents a modal to the user to add the shortcut to siri and access it via voice
 
 | Param         | Type                                        | Description                                                |
 | ------------- | ------------------------------------------- | ---------------------------------------------------------- |

@@ -11,6 +11,17 @@ export interface SiriShortcutsPlugin {
   donate(options: Options): Promise<any>;
 
   /**
+   * Presents a modal to the user to add the shortcut to siri and access it via voice
+   * 
+   * @see https://github.com/lovetodream/capacitor-plugin-siri-shortcuts/issues/3
+   * 
+   * @since 2.2.0
+   * 
+   * @param {Options} options Options to specify for the donation
+   */
+  present(options: Options): Promise<any>;
+
+  /**
    * Deletes the previous donations with the provided persistent identifiers
    *
    * @since 2.1.0
