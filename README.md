@@ -88,7 +88,7 @@ initializeApp() {
 * [`present(...)`](#present)
 * [`delete(...)`](#delete)
 * [`deleteAll()`](#deleteall)
-* [`addListener(...)`](#addlistener)
+* [`addListener('appLaunchBySiriShortcuts', ...)`](#addlistenerapplaunchbysirishortcuts)
 * [`removeAllListeners()`](#removealllisteners)
 * [Interfaces](#interfaces)
 
@@ -100,7 +100,7 @@ initializeApp() {
 ### donate(...)
 
 ```typescript
-donate(options: Options) => any
+donate(options: Options) => Promise<any>
 ```
 
 Donates the provided action to Siri/Shortcuts
@@ -109,7 +109,9 @@ Donates the provided action to Siri/Shortcuts
 | ------------- | ------------------------------------------- | ---------------------------------------------------------- |
 | **`options`** | <code><a href="#options">Options</a></code> | <a href="#options">Options</a> to specify for the donation |
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;any&gt;</code>
+
+**Since:** 1.0.0
 
 --------------------
 
@@ -117,7 +119,7 @@ Donates the provided action to Siri/Shortcuts
 ### present(...)
 
 ```typescript
-present(options: Options) => any
+present(options: Options) => Promise<any>
 ```
 
 Presents a modal to the user to add the shortcut to siri and access it via voice
@@ -126,7 +128,9 @@ Presents a modal to the user to add the shortcut to siri and access it via voice
 | ------------- | ------------------------------------------- | ---------------------------------------------------------- |
 | **`options`** | <code><a href="#options">Options</a></code> | <a href="#options">Options</a> to specify for the donation |
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;any&gt;</code>
+
+**Since:** 2.2.0
 
 --------------------
 
@@ -134,7 +138,7 @@ Presents a modal to the user to add the shortcut to siri and access it via voice
 ### delete(...)
 
 ```typescript
-delete(options: DeleteOptions) => any
+delete(options: DeleteOptions) => Promise<void>
 ```
 
 Deletes the previous donations with the provided persistent identifiers
@@ -143,7 +147,7 @@ Deletes the previous donations with the provided persistent identifiers
 | ------------- | ------------------------------------------------------- |
 | **`options`** | <code><a href="#deleteoptions">DeleteOptions</a></code> |
 
-**Returns:** <code>any</code>
+**Since:** 2.1.0
 
 --------------------
 
@@ -151,17 +155,17 @@ Deletes the previous donations with the provided persistent identifiers
 ### deleteAll()
 
 ```typescript
-deleteAll() => any
+deleteAll() => Promise<void>
 ```
 
 Delets all the previously donated activities
 
-**Returns:** <code>any</code>
+**Since:** 2.1.0
 
 --------------------
 
 
-### addListener(...)
+### addListener('appLaunchBySiriShortcuts', ...)
 
 ```typescript
 addListener(eventName: 'appLaunchBySiriShortcuts', listenerFunc: (shortcut: Shortcut) => void) => Promise<PluginListenerHandle> & PluginListenerHandle
@@ -172,10 +176,12 @@ and notifies the listenerFunc if a Shortcuts has been executed.
 
 | Param              | Type                                                                 | Description                                     |
 | ------------------ | -------------------------------------------------------------------- | ----------------------------------------------- |
-| **`eventName`**    | <code>"appLaunchBySiriShortcuts"</code>                              | Name of the event                               |
+| **`eventName`**    | <code>'appLaunchBySiriShortcuts'</code>                              | Name of the event                               |
 | **`listenerFunc`** | <code>(shortcut: <a href="#shortcut">Shortcut</a>) =&gt; void</code> | Function to execute when listener gets notified |
 
-**Returns:** <code>any</code>
+**Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt; & <a href="#pluginlistenerhandle">PluginListenerHandle</a></code>
+
+**Since:** 2.0.1
 
 --------------------
 
@@ -183,12 +189,12 @@ and notifies the listenerFunc if a Shortcuts has been executed.
 ### removeAllListeners()
 
 ```typescript
-removeAllListeners() => any
+removeAllListeners() => Promise<void>
 ```
 
 Remove all listeners for this plugin.
 
-**Returns:** <code>any</code>
+**Since:** 2.0.1
 
 --------------------
 
@@ -217,9 +223,16 @@ Remove all listeners for this plugin.
 
 <a href="#options">Options</a> to specify for a deletion
 
-| Prop              | Type            | Description                                             |
-| ----------------- | --------------- | ------------------------------------------------------- |
-| **`identifiers`** | <code>{}</code> | Array of persistent identifiers which should be deleted |
+| Prop              | Type                  | Description                                             |
+| ----------------- | --------------------- | ------------------------------------------------------- |
+| **`identifiers`** | <code>string[]</code> | Array of persistent identifiers which should be deleted |
+
+
+#### PluginListenerHandle
+
+| Prop         | Type                                      |
+| ------------ | ----------------------------------------- |
+| **`remove`** | <code>() =&gt; Promise&lt;void&gt;</code> |
 
 
 #### Shortcut
@@ -231,12 +244,5 @@ of a shortcut
 | Prop                       | Type                |
 | -------------------------- | ------------------- |
 | **`persistentIdentifier`** | <code>string</code> |
-
-
-#### PluginListenerHandle
-
-| Prop         | Type                      |
-| ------------ | ------------------------- |
-| **`remove`** | <code>() =&gt; any</code> |
 
 </docgen-api>
