@@ -1,10 +1,11 @@
 {
   "name": "capacitor-plugin-siri-shorts",
-  "version": "2.2.2",
+  "version": "3.0.0",
   "description": "Capacitor Plugin for Siri Shortcuts",
-  "main": "dist/plugin.js",
+  "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
+  "unpkg": "dist/plugin.js",
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:web",
     "verify:ios": "cd ios && pod install && xcodebuild -workspace Plugin.xcworkspace -scheme Plugin && cd ..",
