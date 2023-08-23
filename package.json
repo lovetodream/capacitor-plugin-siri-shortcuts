@@ -34,7 +34,7 @@
     "@ionic/swiftlint-config": "1.1.2",
     "eslint": "8.25.0",
     "prettier": "2.7.1",
-    "prettier-plugin-java": "1.6.2",
+    "prettier-plugin-java": "2.3.0",
     "rimraf": "3.0.2",
     "rollup": "2.79.1",
     "swiftlint": "1.0.1",
