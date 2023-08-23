@@ -1,6 +1,6 @@
 {
   "name": "capacitor-plugin-siri-shorts",
-  "version": "3.0.0",
+  "version": "5.0.0",
   "description": "Capacitor Plugin for Siri Shortcuts",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
@@ -25,10 +25,10 @@
   "author": "Timo Zacherl",
   "license": "MIT",
   "devDependencies": {
-    "@capacitor/android": "4.3.0",
-    "@capacitor/core": "4.3.0",
+    "@capacitor/android": "^5.0.0",
+    "@capacitor/core": "^5.0.0",
     "@capacitor/docgen": "0.2.0",
-    "@capacitor/ios": "4.3.0",
+    "@capacitor/ios": "^5.0.0",
     "@ionic/eslint-config": "0.3.0",
     "@ionic/prettier-config": "2.0.0",
     "@ionic/swiftlint-config": "1.1.2",
@@ -41,7 +41,7 @@
     "typescript": "4.7.4"
   },
   "peerDependencies": {
-    "@capacitor/core": "^3.0.0 || ^4.0.0"
+    "@capacitor/core": "^5.0.0"
   },
   "files": [
     "dist/",
