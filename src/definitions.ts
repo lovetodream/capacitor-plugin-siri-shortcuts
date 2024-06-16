@@ -49,7 +49,7 @@ export interface SiriShortcutsPlugin {
   addListener(
     eventName: 'appLaunchBySiriShortcuts',
     listenerFunc: (shortcut: Shortcut) => void,
-  ): Promise<PluginListenerHandle> & PluginListenerHandle;
+  ): Promise<PluginListenerHandle>;
 
   /**
    * Remove all listeners for this plugin.
