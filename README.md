@@ -9,7 +9,8 @@
 
 ## 💥 Breaking Changes
 
-Version 5 of this Plugin only works with Capacitor 5.
+Version 6 of this Plugin only works with Capacitor 6.
+- For Capacitor 5 install `npm i capacitor-plugin-siri-shorts@5.0.0`.
 - For Capacitor 3 or 4 install `npm i capacitor-plugin-siri-shorts@3.0.0`.
 - For Capacitor 2 install `npm i capacitor-plugin-siri-shorts@1.0.3`.
 
