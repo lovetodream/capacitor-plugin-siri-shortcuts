@@ -1,6 +1,6 @@
 {
   "name": "@bubble-labs/capacitor-plugin-siri-shorts",
-  "version": "7.0.3",
+  "version": "8.0.1",
   "description": "Capacitor Plugin for Siri Shortcuts",
   "publishConfig": {
     "access": "public"
