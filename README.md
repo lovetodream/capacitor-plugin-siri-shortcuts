@@ -91,7 +91,7 @@ initializeApp() {
 * [`present(...)`](#present)
 * [`delete(...)`](#delete)
 * [`deleteAll()`](#deleteall)
-* [`addListener('appLaunchBySiriShortcuts', ...)`](#addlistenerapplaunchbysirishortcuts)
+* [`addListener('appLaunchBySiriShortcuts', ...)`](#addlistenerapplaunchbysirishortcuts-)
 * [`removeAllListeners()`](#removealllisteners)
 * [Interfaces](#interfaces)
 
