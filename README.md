@@ -1,3 +1,9 @@
+> This plugin is no longer maintained as I stopped doing cross platform development a long time ago. Moreover I encourage everyone coming across this repo to do the same. At least think about building native apps. Your users will appreciate it and you won't lose your sanity (as quickly). I had the pleasure to migrate lots of somewhat big Capacitor (or other cross platform) projects to native apps over the years. Mostly because they grew to be unmaintainable, unstable and laggy. Here's an article that reflects my opinion quite well: [Why we are not cross-platform developers](https://medium.com/pixplicity/why-we-are-not-cross-platform-developers-fd7ef70e976d)
+>
+> If you still want to use it, fork it for all I care.
+
+](https://medium.com/pixplicity/why-we-are-not-cross-platform-developers-fd7ef70e976d)
+
 ![ios](https://shields.io/badge/iOS-%3E%3D12.0-informational)
 ![xcode](https://shields.io/badge/Xcode-%3E%3D10.0-informational)
 ![npm](https://shields.io/npm/dw/capacitor-plugin-siri-shorts)
